@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>로또</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <style>
+        body {
+            margin: 0px 0px 0px 0px;
+            background: orange;
+            text-align: center;
+            overflow-x: hidden;
+            padding-bottom: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        div {
+            border: 0px;
+        }
+
+        hr {
+            background-color: lightgray;
+            height: 1px;
+            border: 0px;
+        }
+
+        h1,
+        p,
+        span,
+        h4,
+        table {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .header {
+            color: white;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin-top: 40px;
+            margin-bottom: 0px;
+        }
+
+        .content {
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 80px;
+        }
+
+        .button {
+            background-color: orange;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 30px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .itmes {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="header"><span id="title">ㅂㅅ </span> 같은 당신<br><span id="title_name">당신</span>의 <span id="title_sub"
+            style="color: white;">아름다운</span>
+        언제?</h1>
+
+    <div class=enter_zone>
+        <div style="display: flex;align-items: center; margin-top: 100px;">
+            <h4 class="itmes">성</h4>
+            <input id="last" style="width: 100px;height: 30px;font-size: 20px;margin-left: 23px;">
+        </div>
+        <div style="display: flex;align-items: center;">
+            <h4 class="itmes">이름</h4>
+            <input id="name" style="width: 100px;height: 30px;font-size: 20px;margin-left: 10px;">
+        </div>
+        <div style="display: flex;align-items: center;">
+            <h4 class="itmes">나이</h4>
+            <input id="age" type="number" style="width: 100px;height: 30px;font-size: 20px;margin-left: 10px;">
+        </div>
+
+        <button class="button" onclick="myFunction()">결과 보기</button>
+    </div>
+
+    <div class=result_zone style="display: none;margin-top: 100px;">
+        <h1 style="color: white;"><span id="time" style="color: red;"></span> 년 안에</h1>
+        <h1 style="color: white;"><span id="where" style="color: red;"></span>에서 만납니다!</h1>
+        <button class="button" onclick="redoing()">다시하기</button>
+        <p style="color: white;margin-top: 100px;">gyutae0729@gmail.com<br>여자친구 생성시 메일로 기프트콘 부탁드립니다.</p>
+    </div>
+
+
+
+
+
+    <script>
+        var meet_list = ["스타벅스", "이디야", "카페", "음식점", "술집", "공원", "PC방", "엘리베이터", "회사", "비행기", "버스", "놀이공원", "마트", "편의점", "학교"];
+        $(document).ready(function () {
+            $("#title").fadeOut(2000);
+            $("#title").fadeIn(500);
+            setTimeout(function () {
+                document.getElementById("title").innerHTML = "천사";
+            }, 2000);
+
+            $("#title_sub").fadeOut(2000);
+            $("#title_sub").fadeIn(500);
+            setTimeout(function () {
+                document.getElementById("title_sub").innerHTML = "여자친구";
+            }, 2000);
+
+            $('button.button').click(function () {
+                var x = document.getElementById("name").value;
+                var y = document.getElementById("age").value;
+                var z = document.getElementById("last").value;
+
+                if (z == "") {
+                    alert("성(Family Name) 입력 바랍니다.");
+                }
+                else if (y == "") {
+                    alert("나이를 입력 바랍니다.");
+                }
+                else if (x.length != 2) {
+                    alert("이름은 2글자 입력입니다.");
+                }
+                else {
+                    var when = Math.floor((Math.random() * 100) % parseInt(y));
+                    var where = when % (meet_list.length);
+                    if (when == 0)
+                        document.getElementById("time").innerHTML = "올해 ";
+                    else
+                        document.getElementById("time").innerHTML = when + " ";
+                    document.getElementById("where").innerHTML = meet_list[where];
+                    $('div.enter_zone').fadeOut(2000);
+                    $("#title_name").fadeOut(2000);
+                    $("#title").fadeOut(2000);
+
+                    setTimeout(function () {
+                        var na = document.getElementById("title_name")
+                        var ti = document.getElementById("title")
+                        document.getElementById("title_name").innerHTML = x;
+                        document.getElementById("title").innerHTML = "찐따";
+                        na.style.color = "red";
+                        ti.style.color = "red";
+                        $("#title").fadeIn(2000);
+                        $("#title_name").fadeIn(2000);
+                        $('div.result_zone').fadeIn(2000);
+                    }, 2000);
+                }
+            });
+
+        });
+        function redoing() {
+            alert("응~ 안 생깁니다~");
+            location.reload();
+        }
+    </script>
+</body>
+
+</html>
