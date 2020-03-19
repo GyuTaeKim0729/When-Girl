@@ -117,7 +117,7 @@
         <h1 style="color: orange;"><span id="where" style="color: red;"></span>에서 만납니다!</h1>
         <button class="buttons" onclick="redoing()">다시하기</button>
     </div>
-    <p style="color: white;margin-top: 100px;">gyutae0729@gmail.com<br>여자친구 생성시 메일로 기프트콘 부탁드립니다.</p>
+    <p id="email" style="color: white;margin-top: 100px;">gyutae0729@gmail.com<br>여자친구 생성시 메일로 기프트콘 부탁드립니다.</p>
 
 
 
@@ -166,8 +166,10 @@
                     $('div.enter_zone').fadeOut(2000);
                     $("#title_name").fadeOut(2000);
                     $("#title").fadeOut(2000);
+                    $("#email").fadeOut(2000);
 
                     setTimeout(function () {
+                        document.documentElement.scrollTop = 0;
                         var na = document.getElementById("title_name")
                         var ti = document.getElementById("title")
                         document.getElementById("title_name").innerHTML = x;
@@ -177,6 +179,7 @@
                         $("#title").fadeIn(2000);
                         $("#title_name").fadeIn(2000);
                         $('div.result_zone').fadeIn(2000);
+                        $("#email").fadeIn(2000);
                     }, 2000);
                 }
             });
